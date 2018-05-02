@@ -1,0 +1,51 @@
+#:kivy 1.9.0
+#:import Clipboard kivy.core.clipboard.Clipboard
+
+PassGeneratorWindow:
+    orientation: 'vertical'
+    Label:
+        text: 'Key phrace:'
+        size_hint_y: None
+        height: self.texture_size[1]
+    TextInput:
+        id: pass_phrace
+        password: True
+        multiline: False
+        size_hint_y: None
+        height: self.minimum_height
+    Label:
+        text: 'Resurce:'
+        size_hint_y: None
+        height: self.texture_size[1]
+    TextInput:
+        id: resurce
+        multiline: False
+        size_hint_y: None
+        height: self.minimum_height
+    BoxLayout:
+        size_hint_y: None
+        height: '120dp'
+        Button:
+            text: 'Get URL from clipboard'
+            on_press: resurce.text = Clipboard.paste()
+            size_hint_y: None
+            height: '120dp'
+        Button:
+            text: 'Generate password'
+            on_press: root.generate(pass_phrace.text, resurce.text)
+            size_hint_y: None
+            height: '120dp'
+    Label:
+        id: error_label
+        text:''
+
+
+<NewPasswordWidget>
+    orientation: 'vertical'
+    Label:
+        text: 'Here is you password for "%s", press to copy:' % self.parent.resurse_str
+        size_hint_y: None
+        height: self.texture_size[1]
+    Button:
+        text: self.parent.new_pass
+        on_press: self.parent.to_clipboard()

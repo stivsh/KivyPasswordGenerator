@@ -1,0 +1,8 @@
+There isn't password manager that I like :)
+I'd like to use hashs to generate pass.
+
+I like to generate passwords by this simple way:
+echo "[MASTERPASS]github.com" | sha256sum | cut -c1-[pass_len]
+
+So this is a simple android kivy app for pass generation.
+
